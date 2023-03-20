@@ -1,4 +1,4 @@
-PYTHON_VERSION=3.9
+PYTHON_VERSION=3.11
 SYSTEM_PYTHON=python$(PYTHON_VERSION)
 VENV_DIR=./venv
 PIP=$(VENV_DIR)/bin/pip
@@ -19,12 +19,12 @@ clean:
 	rm -rf venv
 
 $(VENV_CHECK): requirements.txt
-	$(SYSTEM_PYTHON) -m venv --clear venv
+	$(SYSTEM_PYTHON) -m venv --clear --system-site-packages venv
 	$(PIP) install -U pip
 	$(PIP) install -r requirements.txt
 
 regen-requirements:
-	$(SYSTEM_PYTHON) -m venv --clear venv
+	$(SYSTEM_PYTHON) -m venv --clear --system-site-packages venv
 	$(PIP) install -U pip
 	$(PIP) install -U -r requirements.in
 	$(PIP) freeze > requirements.txt

@@ -139,7 +139,7 @@ class UnixBuild(BaseBuild):
             filename = JUNIT_FILENAME
             if self.build_out_of_tree:
                 filename = os.path.join(out_of_tree_dir, filename)
-            self.addStep(UploadTestResults(branch, filename=filename))
+            #self.addStep(UploadTestResults(branch, filename=filename))
         self.addStep(Clean(**oot_kwargs))
 
 
@@ -624,7 +624,8 @@ class BaseWindowsBuild(BaseBuild):
             timeout=step_timeout(self.test_timeout),
         ))
         if branch not in ("3",) and not has_option("-R", self.testFlags):
-            self.addStep(UploadTestResults(branch))
+            #self.addStep(UploadTestResults(branch))
+            pass
         self.addStep(Clean(command=clean_command))
 
 
@@ -851,7 +852,7 @@ class UnixCrossBuild(UnixBuild):
             ))
             if branch not in ("3",) and not has_option("-R", self.testFlags):
                 filename = os.path.join(oot_host_path, JUNIT_FILENAME)
-                self.addStep(UploadTestResults(branch, filename=filename))
+                #self.addStep(UploadTestResults(branch, filename=filename))
         self.addStep(
             Clean(
                 name="Clean build Python",
