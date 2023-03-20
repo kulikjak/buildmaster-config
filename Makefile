@@ -19,13 +19,13 @@ clean:
 	rm -rf venv
 
 $(VENV_CHECK): requirements.txt
-	$(SYSTEM_PYTHON) -m venv --clear venv
-	$(PIP) install -U pip 'setuptools<58.0' wheel
+	$(SYSTEM_PYTHON) -m venv --clear --system-site-packages venv
+	$(PIP) install -U pip
 	$(PIP) install -r requirements.txt
 
 regen-requirements:
-	$(SYSTEM_PYTHON) -m venv --clear venv
-	$(PIP) install -U pip 'setuptools<58.0' wheel
+	$(SYSTEM_PYTHON) -m venv --clear --system-site-packages venv
+	$(PIP) install -U pip
 	$(PIP) install -U -r requirements.in
 	$(PIP) freeze > requirements.txt
 
