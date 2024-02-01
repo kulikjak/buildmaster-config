@@ -40,7 +40,7 @@ class CPythonWorker:
         worker_settings = settings.workers[name]
         owner = name.split("-")[0]
         owner_settings = settings.owners[owner]
-        pw = worker_settings.get("password", None) or owner_settings.password
+        pw = "testpass"  # For testing purposes only
         owner_email = owner_settings.get("email", None)
         emails = [str(owner_email)] if owner_email else []
         if settings.use_local_worker:
