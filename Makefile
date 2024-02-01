@@ -70,4 +70,4 @@ stop-master: run-target
 	pkill -KILL -u $(USER) $(PKILL_NAME) ||:
 
 run-target: $(VENV_CHECK)
-	$(BUILDBOT) $(TARGET) master; tail -n$(LOGLINES) master/twistd.log
+	$(BUILDBOT) $(TARGET) master; /usr/gnu/bin/tail -n$(LOGLINES) master/twistd.log
