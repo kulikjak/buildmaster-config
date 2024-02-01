@@ -40,7 +40,9 @@ class CPythonWorker:
         worker_settings = settings.workers[name]
         owner = name.split("-")[0]
         owner_settings = settings.owners[owner]
-        pw = worker_settings.get("password", None) or owner_settings.password
+        #pw = worker_settings.get("password", None) or owner_settings.password
+        # For testing purposes only
+        pw = "testpass"
         owner_email = owner_settings.get("email", None)
         emails = list(
             map(str, filter(None, (settings.get("status_email", None), owner_email)))
